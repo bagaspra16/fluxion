@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- Modern frameset with header, nav, content, and footer -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fluxion — Modern Movie Streaming</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Internal CSS for frameset styling */
+        .header-frame { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+        .nav-frame { background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%); }
+        .content-frame { background: #0a0a0a; }
+        .footer-frame { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+    </style>
+</head>
+
+<frameset rows="80,*,60" frameborder="0" border="0">
+    <frame class="header-frame" src="header.html" name="header" title="Header" scrolling="no">
+    <frameset cols="250,*">
+        <frame class="nav-frame" src="nav.html" name="nav" title="Navigation">
+        <frame class="content-frame" src="home.html" name="content" title="Main content">
+    </frameset>
+    <frame class="footer-frame" src="footer.html" name="footer" title="Footer" scrolling="no">
+    <noframes>
+        <body style="background: #0a0a0a; color: #ffffff; font-family: 'Poppins', sans-serif; text-align: center; padding: 50px;">
+            <h1 style="color: #00ff88;">Fluxion</h1>
+            <p>Your browser does not support frames. Please use a modern browser or open <a href="home.html" style="color: #00ff88;">Home</a> directly.</p>
+        </body>
+    </noframes>
+</frameset>
+</html>
+
+

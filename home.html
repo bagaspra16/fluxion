@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxion — Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Inline CSS for enhanced hero styling */
+        .hero-banner {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(0,0,0,0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="hero-banner">
+        <h1><i class="fas fa-play-circle"></i> Welcome to Fluxion</h1>
+        <p>Unlimited movies, TV shows, and more. Watch anywhere. Cancel anytime.</p>
+    </div>
+
+    <div class="search-form">
+        <h3><i class="fas fa-search"></i> Find Your Next Favorite</h3>
+        <div class="filter-row">
+            <div class="filter-field">
+                <label>Search</label>
+                <input type="text" placeholder="Movie, series, actor...">
+            </div>
+            <div class="filter-field">
+                <label>Genre</label>
+                <select>
+                    <option>All Genres</option>
+                    <option>Action</option>
+                    <option>Comedy</option>
+                    <option>Drama</option>
+                    <option>Horror</option>
+                    <option>Sci-Fi</option>
+                    <option>Thriller</option>
+                </select>
+            </div>
+            <div class="filter-field">
+                <label>Year</label>
+                <select>
+                    <option>All Years</option>
+                    <option>2024</option>
+                    <option>2023</option>
+                    <option>2022</option>
+                    <option>2021</option>
+                    <option>2020</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2><i class="fas fa-fire"></i> Trending Now</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-film"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">The Dark Knight</h3>
+                    <p class="movie-year">2008</p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 9.0/10</p>
+                    <span class="genre-badge">Action</span>
+                    <span class="genre-badge">Drama</span>
+                    <br>
+                    <a href="watch-dark-knight.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-rocket"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Interstellar</h3>
+                    <p class="movie-year">2014</p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.6/10</p>
+                    <span class="genre-badge">Sci-Fi</span>
+                    <span class="genre-badge">Drama</span>
+                    <br>
+                    <a href="watch-interstellar.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-mask"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Inception</h3>
+                    <p class="movie-year">2010</p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.8/10</p>
+                    <span class="genre-badge">Action</span>
+                    <span class="genre-badge">Thriller</span>
+                    <br>
+                    <a href="watch-inception.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-theater-masks"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Joker</h3>
+                    <p class="movie-year">2019</p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.4/10</p>
+                    <span class="genre-badge">Drama</span>
+                    <span class="genre-badge">Thriller</span>
+                    <br>
+                    <a href="watch-joker.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2><i class="fas fa-star"></i> Why Choose Fluxion?</h2>
+        <div style="overflow: hidden;">
+            <div style="width: 48%; float: left; margin-right: 4%;">
+                <ol>
+                    <li>Unlimited streaming of movies and TV shows</li>
+                    <li>Watch on any device, anywhere</li>
+                    <li>New content added weekly</li>
+                </ol>
+            </div>
+            <div style="width: 48%; float: left;">
+                <ul>
+                    <li>HD and 4K quality available</li>
+                    <li>Download for offline viewing</li>
+                    <li>Multiple user profiles</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

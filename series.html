@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxion — TV Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Inline CSS for series page styling */
+        .series-banner {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .series-banner h1 {
+            color: #00ff88;
+            font-size: 36px;
+            margin: 0 0 10px 0;
+        }
+        .series-banner p {
+            color: #b0b0b0;
+            font-size: 18px;
+            margin: 0;
+        }
+        .season-badge {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="hero-banner">
+        <h1><i class="fas fa-tv"></i> TV Series Collection</h1>
+        <p>Binge-watch your favorite shows. New episodes added weekly.</p>
+    </div>
+
+    <div class="search-form">
+        <h3><i class="fas fa-search"></i> Find Your Next Series</h3>
+        <div class="filter-row">
+            <div class="filter-field">
+                <label>Series Title</label>
+                <input type="text" placeholder="Search series...">
+            </div>
+            <div class="filter-field">
+                <label>Genre</label>
+                <select>
+                    <option>All Genres</option>
+                    <option>Crime</option>
+                    <option>Drama</option>
+                    <option>Comedy</option>
+                    <option>Sci-Fi</option>
+                    <option>Fantasy</option>
+                    <option>Thriller</option>
+                    <option>Horror</option>
+                </select>
+            </div>
+            <div class="filter-field">
+                <label>Status</label>
+                <select>
+                    <option>All Status</option>
+                    <option>Ongoing</option>
+                    <option>Completed</option>
+                    <option>New Releases</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2><i class="fas fa-fire"></i> Popular Series</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-mask"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Breaking Bad</h3>
+                    <p class="movie-year">2008-2013 <span class="season-badge">5 Seasons</span></p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 9.5/10</p>
+                    <span class="genre-badge">Crime</span>
+                    <span class="genre-badge">Drama</span>
+                    <br>
+                    <a href="watch-breaking-bad.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-crown"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Game of Thrones</h3>
+                    <p class="movie-year">2011-2019 <span class="season-badge">8 Seasons</span></p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 9.2/10</p>
+                    <span class="genre-badge">Fantasy</span>
+                    <span class="genre-badge">Drama</span>
+                    <br>
+                    <a href="watch-game-of-thrones.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-search"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Stranger Things</h3>
+                    <p class="movie-year">2016-Present <span class="season-badge">4 Seasons</span></p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.7/10</p>
+                    <span class="genre-badge">Sci-Fi</span>
+                    <span class="genre-badge">Horror</span>
+                    <br>
+                    <a href="watch-stranger-things.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-building"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">The Office</h3>
+                    <p class="movie-year">2005-2013 <span class="season-badge">9 Seasons</span></p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.9/10</p>
+                    <span class="genre-badge">Comedy</span>
+                    <span class="genre-badge">Mockumentary</span>
+                    <br>
+                    <a href="watch-the-office.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-brain"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Mindhunter</h3>
+                    <p class="movie-year">2017-2019 <span class="season-badge">2 Seasons</span></p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.6/10</p>
+                    <span class="genre-badge">Crime</span>
+                    <span class="genre-badge">Thriller</span>
+                    <br>
+                    <a href="watch-mindhunter.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-globe"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">The Crown</h3>
+                    <p class="movie-year">2016-Present <span class="season-badge">6 Seasons</span></p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.7/10</p>
+                    <span class="genre-badge">Drama</span>
+                    <span class="genre-badge">History</span>
+                    <br>
+                    <a href="watch-the-crown.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2><i class="fas fa-clock"></i> New Releases This Week</h2>
+        <div style="overflow: hidden;">
+            <div style="width: 48%; float: left; margin-right: 4%;">
+                <ol>
+                    <li><i class="fas fa-play-circle" style="color: #00ff88; margin-right: 10px;"></i>Ozark - Season 4 Part 2</li>
+                    <li><i class="fas fa-play-circle" style="color: #00ff88; margin-right: 10px;"></i>Bridgerton - Season 2</li>
+                    <li><i class="fas fa-play-circle" style="color: #00ff88; margin-right: 10px;"></i>The Witcher - Season 2</li>
+                </ol>
+            </div>
+            <div style="width: 48%; float: left;">
+                <ul>
+                    <li><i class="fas fa-play-circle" style="color: #00ff88; margin-right: 10px;"></i>Arcane - Season 1</li>
+                    <li><i class="fas fa-play-circle" style="color: #00ff88; margin-right: 10px;"></i>Money Heist - Season 5</li>
+                    <li><i class="fas fa-play-circle" style="color: #00ff88; margin-right: 10px;"></i>You - Season 3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="playlist.html" target="content" class="btn-primary"><i class="fas fa-list"></i> View My Watchlist</a>
+        <a href="home.html" target="content" class="btn-secondary"><i class="fas fa-home"></i> Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxion — My Watchlist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .progress-bar {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            height: 6px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: #00ff88;
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        .watchlist-stats {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .stat-item {
+            width: 23%;
+            float: left;
+            text-align: center;
+            margin-right: 2%;
+        }
+        .stat-item:last-child {
+            margin-right: 0;
+        }
+        .stat-number {
+            color: #00ff88;
+            font-size: 20px;
+            font-weight: 700;
+            display: block;
+        }
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="watchlist-header">
+        
+    </div>
+    <div class="hero-banner">
+        <h1><i class="fas fa-list"></i> My Watchlist</h1>
+        <p>Your personalized collection of movies and shows to watch</p>
+    </div>
+
+    <div class="watchlist-stats">
+        <div class="stat-item">
+            <span class="stat-number">24</span>
+            <span class="stat-label">In Progress</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">156</span>
+            <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">89</span>
+            <span class="stat-label">To Watch</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Favorites</span>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2><i class="fas fa-play-circle"></i> Currently Watching</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-film"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">The Dark Knight</h3>
+                    <p class="movie-year">2008</p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 9.0/10</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                    </div>
+                    <span class="genre-badge">Action</span>
+                    <span class="genre-badge">Drama</span>
+                    <br>
+                    <a href="watch-dark-knight.html" target="content" class="watch-button"><i class="fas fa-play"></i> Continue</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-search"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Stranger Things</h3>
+                    <p class="movie-year">2016-Present</p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.7/10</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%;"></div>
+                    </div>
+                    <span class="genre-badge">Sci-Fi</span>
+                    <span class="genre-badge">Horror</span>
+                    <br>
+                    <a href="watch-stranger-things.html" target="content" class="watch-button"><i class="fas fa-play"></i> Continue</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2><i class="fas fa-tasks"></i> Watchlist Planning</h2>
+        <div style="overflow: hidden;">
+            <div style="width: 48%; float: left; margin-right: 4%;">
+                <h3 style="color: #00ff88; font-size: 18px; margin-bottom: 15px;"><i class="fas fa-list-ol"></i> Priority Queue</h3>
+                <ol>
+                    <li><i class="fas fa-play" style="color: #00ff88; margin-right: 8px;"></i>Finish Breaking Bad Season 5</li>
+                    <li><i class="fas fa-play" style="color: #00ff88; margin-right: 8px;"></i>Watch The Godfather trilogy</li>
+                    <li><i class="fas fa-play" style="color: #00ff88; margin-right: 8px;"></i>Start Game of Thrones</li>
+                    <li><i class="fas fa-play" style="color: #00ff88; margin-right: 8px;"></i>Watch Inception again</li>
+                </ol>
+            </div>
+            <div style="width: 48%; float: left;">
+                <h3 style="color: #00ff88; font-size: 18px; margin-bottom: 15px;"><i class="fas fa-calendar-week"></i> Weekend Plans</h3>
+                <ul>
+                    <li><i class="fas fa-users" style="color: #00ff88; margin-right: 8px;"></i>Movie night with friends</li>
+                    <li><i class="fas fa-bolt" style="color: #00ff88; margin-right: 8px;"></i>Binge Stranger Things S4</li>
+                    <li><i class="fas fa-star" style="color: #00ff88; margin-right: 8px;"></i>Watch new releases</li>
+                    <li><i class="fas fa-sort" style="color: #00ff88; margin-right: 8px;"></i>Organize watchlist</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2><i class="fas fa-clock"></i> Recently Added</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-mask"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Pulp Fiction</h3>
+                    <p class="movie-year">1994</p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.9/10</p>
+                    <span class="genre-badge">Crime</span>
+                    <span class="genre-badge">Drama</span>
+                    <br>
+                    <a href="watch-pulp-fiction.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <div class="movie-poster"><i class="fas fa-crown"></i></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">The Crown</h3>
+                    <p class="movie-year">2016-Present</p>
+                    <p class="movie-rating"><i class="fas fa-star"></i> 8.7/10</p>
+                    <span class="genre-badge">Drama</span>
+                    <span class="genre-badge">History</span>
+                    <br>
+                    <a href="watch-the-crown.html" target="content" class="watch-button"><i class="fas fa-play"></i> Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="movies.html" target="content" class="btn-primary"><i class="fas fa-film"></i> Browse Movies</a>
+        <a href="series.html" target="content" class="btn-primary"><i class="fas fa-tv"></i> Browse Series</a>
+        <a href="home.html" target="content" class="btn-secondary"><i class="fas fa-home"></i> Back to Home</a>
+    </div>
+</body>
+</html>

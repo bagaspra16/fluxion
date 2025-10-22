@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            height: 60px;
+            overflow: hidden;
+        }
+        .footer-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 60px;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+        .footer-link:hover {
+            color: #00ff88;
+        }
+        .social-icon {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        .social-icon:hover {
+            color: #00ff88;
+        }
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="footer-container">
+        <div class="footer-left">
+            <span class="copyright">© 2025 Fluxion. All rights reserved.</span>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+        
+        <div class="footer-right">
+            <i class="fab fa-facebook social-icon" title="Facebook"></i>
+            <i class="fab fa-twitter social-icon" title="Twitter"></i>
+            <i class="fab fa-instagram social-icon" title="Instagram"></i>
+            <i class="fab fa-youtube social-icon" title="YouTube"></i>
+        </div>
+    </div>
+</body>
+</html>
