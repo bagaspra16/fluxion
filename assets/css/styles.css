@@ -103,7 +103,7 @@ body {
 }
 
 .movie-card {
-  width: 220px;
+  width: 240px;
   float: left;
   margin: 0 20px 30px 0;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -112,25 +112,47 @@ body {
   overflow: hidden;
   transition: all 0.3s ease;
   position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .movie-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   border-color: #00ff88;
-  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3);
 }
 
 .movie-poster {
   width: 100%;
-  height: 320px;
+  height: 360px;
   background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  color: #00ff88;
-  font-size: 48px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+}
+
+.movie-poster img:not([src]) {
+  opacity: 0;
+}
+
+.movie-poster img[src] {
+  opacity: 1;
+}
+
+.movie-poster i {
+  color: #00ff88;
+  font-size: 48px;
+  opacity: 0.7;
 }
 
 .movie-poster::before {
@@ -143,9 +165,31 @@ body {
   background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 136, 0.1) 50%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
 .movie-card:hover .movie-poster::before {
+  opacity: 1;
+}
+
+.movie-card:hover .movie-poster img {
+  transform: scale(1.05);
+}
+
+.movie-poster::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.movie-card:hover .movie-poster::after {
   opacity: 1;
 }
 
@@ -411,6 +455,74 @@ ul li {
 .filter-field select option {
   background: #1a1a1a;
   color: #ffffff;
+}
+
+/* Responsive Movie Cards */
+@media (max-width: 1200px) {
+  .movie-card {
+    width: 200px;
+    margin: 0 15px 25px 0;
+  }
+  
+  .movie-poster {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-card {
+    width: 180px;
+    margin: 0 10px 20px 0;
+  }
+  
+  .movie-poster {
+    height: 270px;
+  }
+  
+  .movie-info {
+    padding: 15px;
+  }
+  
+  .movie-title {
+    font-size: 14px;
+  }
+  
+  .movie-year, .movie-rating {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-card {
+    width: 160px;
+    margin: 0 8px 15px 0;
+  }
+  
+  .movie-poster {
+    height: 240px;
+  }
+  
+  .movie-info {
+    padding: 12px;
+  }
+  
+  .movie-title {
+    font-size: 13px;
+  }
+  
+  .movie-year, .movie-rating {
+    font-size: 11px;
+  }
+  
+  .genre-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .watch-button {
+    font-size: 11px;
+    padding: 8px 12px;
+  }
 }
 
 

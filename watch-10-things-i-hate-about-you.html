@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxion — Watch 10 Things I Hate About You</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .watch-container {
+            background: #0a0a0a;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .video-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            background: #000000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .video-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+        .movie-info {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 255, 136, 0.02) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .movie-title {
+            color: #00ff88;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .movie-meta {
+            color: #b0b0b0;
+            font-size: 16px;
+            margin: 0 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .movie-description {
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+        .back-btn {
+            background: transparent;
+            color: #00ff88;
+            border: 2px solid #00ff88;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="watch-container">
+        <a href="movies.html" target="content" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Browse
+        </a>
+
+        <div class="video-section">
+            <div class="video-wrapper">
+                <iframe class="video-iframe" 
+                        src="https://www.youtube.com/embed/AM8TgRk5dms?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="movie-info">
+            <h1 class="movie-title">
+                <i class="fas fa-play-circle"></i> 10 Things I Hate About You
+            </h1>
+            <div class="movie-meta">
+                <span><i class="fas fa-calendar"></i> 1999</span>
+                <span><i class="fas fa-clock"></i> 97 min</span>
+                <span><i class="fas fa-star"></i> 7.3/10</span>
+                <span><i class="fas fa-eye"></i> Comedy, Romance</span>
+            </div>
+            <p class="movie-description">
+                A high school boy, Cameron, cannot date Bianca until her anti-social older sister Kat has a boyfriend, so Cameron pays Patrick to woo Kat. This modern retelling of Shakespeare's "The Taming of the Shrew" is a beloved teen romantic comedy.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
