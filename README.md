@@ -2,9 +2,21 @@
 
 A Netflix-style web streaming platform built with traditional HTML frameset architecture and modern design principles.
 
+## 👥 Project Credits
+
+This project is developed by **Group 6** for the Web Design course.
+
+### Group Members
+
+1. **Bagas Pratama Junianika**
+2. **Naufal Fayyaz Ilham**
+3. **Radella Hafiza Gehan**
+4. **Saw Innacent Sine**
+5. **Mohammad Naufal Pranantya**
+
 ## 🎯 Project Overview
 
-Fluxion is a complete movie and series streaming web application featuring a modern dark theme with vibrant green accents. The platform uses traditional frameset architecture with seamless navigation and includes a comprehensive sign-up system with HTML5 validation.
+Fluxion is a complete movie and series streaming web application featuring a modern dark theme with vibrant green accents. The platform uses traditional frameset architecture with seamless navigation and includes a comprehensive sign-up system with HTML5 validation. This project demonstrates mastery of HTML5, CSS3, and modern web development principles.
 
 ## 📋 Project Requirements
 
