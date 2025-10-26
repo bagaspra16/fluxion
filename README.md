@@ -165,12 +165,6 @@ Pure HTML5 validation without JavaScript:
 - `type="email"` for email validation
 - Visual feedback through CSS `:valid` and `:invalid` pseudo-classes
 
-### Responsive Design
-- Mobile-first approach
-- Breakpoints at 768px and 968px
-- Fluid grid layouts
-- Flexible navigation
-
 ## 🌟 Features
 
 - **Frameset Architecture**: Traditional HTML frameset with seamless navigation
@@ -182,15 +176,3 @@ Pure HTML5 validation without JavaScript:
 - **Smooth Animations**: Hover effects and transitions throughout
 - **Accessibility**: Semantic HTML and proper form labels
 
-## 📝 Notes
-
-- All links in navigation use `target="content"` to load in the main frame
-- Sign Up button opens in new tab (`target="_blank"`) for standalone experience
-- The project maintains relative paths for portability
-- Images are optimized webp and jpeg formats
-- External dependencies: Google Fonts (Poppins) and Font Awesome icons
-
----
-**Built with**: HTML5, CSS3, Traditional Frameset Architecture  
-**Status**: Complete and fully functional  
-**Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
