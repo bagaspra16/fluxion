@@ -1,55 +1,196 @@
-# Fluxion — Netflix‑style Student Project
+# Fluxion — Modern Movie Streaming Platform
 
-This project satisfies the listed requirements:
+A Netflix-style web streaming platform built with traditional HTML frameset architecture and modern design principles.
 
-- Minimum 5 different pages: `home.html`, `movies.html`, `series.html`, `playlist.html`, `contact.html` — all load within the master frame on `index.html` and are excluded from the navigation and other parts.
-- CSS properties using all three methods:
-  - External file: `assets/css/styles.css` (theme, layout, components)
-  - Internal style tag: in `index.html` (e.g., `.pill`) and `contact.html` section style
-  - Inline style attributes: small notes and spacing across pages
-  - Property coverage examples:
-    - Background: gradients, colors
-    - Text/Font: color, letter-spacing, font-weight, font-size
-    - Dimension: padding, border-radius, width/height
-    - Positioning: grid, flex, absolute, sticky
-- Forms and validation on `contact.html` containing: text input, password input, textarea, radio, checkbox, select, and submit. Client-side validation in `assets/js/validate.js`.
-- Lists and table:
-  - Table: on `movies.html`
-  - Ordered lists: two (on `home.html` and `playlist.html`)
-  - Unordered lists: two (on `home.html` and `movies.html`/`playlist.html`)
+## 🎯 Project Overview
 
-## How to run
-Open `index.html` in a browser. Use the left navigation; pages will load inside the main frame.
+Fluxion is a complete movie and series streaming web application featuring a modern dark theme with vibrant green accents. The platform uses traditional frameset architecture with seamless navigation and includes a comprehensive sign-up system with HTML5 validation.
 
-## Code overview
+## 📋 Project Requirements
 
-### index.html
-- Header with brand and a small `.pill` badge styled via an internal `<style>` block.
-- Sidebar navigation uses links targeted to the `iframe` named `content`. This is the required master frame.
-- The main content contains the `<iframe>` with `src="home.html"` so the site has a default landing page.
+✅ **Minimum 5 Different Pages**
+- `home.html` - Landing page with hero section and trending content
+- `movies.html` - Movie listings with data table
+- `series.html` - TV series grid layout
+- `playlist.html` - User's watchlist and playlists
+- `signup.html` - Registration page with complete form validation
 
-### assets/css/styles.css
-- Implements a dark, Netflix‑inspired theme using CSS variables.
-- Demonstrates background (gradients), text/font (font-weight, color, letter-spacing), dimension (padding, border-radius, aspect-ratio), and positioning (grid, flex, sticky).
-- Provides reusable classes for grids, cards, posters, forms, buttons, tables, and utilities.
+✅ **CSS Implementation (All Three Methods)**
+- **External CSS**: `assets/css/styles.css` (main theme & components)
+- **Internal CSS**: Style tags in `header.html`, `nav.html`, `footer.html`
+- **Inline CSS**: Specific styling for signup page, watch pages, and responsive adjustments
 
-### home.html
-- Hero section introducing the site with CTA buttons linking to `movies.html` and `series.html` (targeted to the frame).
-- Cards grid for trending titles and two ordered lists explaining benefits.
+✅ **Form with All Required Elements** (in `signup.html`)
+- Text Input (Username with pattern validation)
+- Password Input (with complexity requirements)
+- Textarea (Bio field with character limit)
+- Radio Buttons (Subscription plan selection)
+- Checkboxes (Interest selection)
+- Select/Dropdown (Country selection)
+- Submit Button (with HTML5 validation)
 
-### movies.html
-- Data table listing movies with hover styles.
-- Two unordered lists for notes and quick links interconnecting pages.
+✅ **Lists and Tables**
+- **Table**: Movie data table in `movies.html`
+- **Ordered Lists**: Multiple instances across pages
+- **Unordered Lists**: Navigation menus and content lists
 
-### series.html
-- Grid of series cards with badges and a link to playlist.
+## 🏗️ Architecture
 
-### playlist.html
-- Contains an ordered list (watch plan) and an unordered list (tasks). Interlinks to `contact.html`.
+### Master Frameset (`index.html`)
+The application uses traditional `<frameset>` architecture with four main sections:
+- **Header Frame** (80px): `header.html` with branding and Sign Up button
+- **Navigation Frame** (250px): `nav.html` with sidebar menu
+- **Content Frame**: Main content area loading pages dynamically
+- **Footer Frame** (60px): `footer.html` with footer information
 
-### contact.html + assets/js/validate.js
-- Full form: text, password, textarea, radio, checkbox, select, submit. Inline section styling demonstrates the second CSS method.
-- Validation script checks required fields, email format, min password length, region select, and radio choice; displays error messages next to inputs.
+### Page Structure
+
+```
+index.html (master frameset)
+├── header.html (top navigation bar)
+│   └── Sign Up button opens signup.html in new tab
+├── nav.html (sidebar navigation)
+│   ├── Home
+│   ├── Movies
+│   ├── Series
+│   └── My Playlist
+├── content area (dynamic loading)
+│   ├── home.html
+│   ├── movies.html
+│   ├── series.html
+│   ├── playlist.html
+│   └── watch-*.html (individual title pages)
+└── footer.html (footer section)
+```
+
+### Sign Up Page (`signup.html`)
+A standalone page (opens in new tab) featuring:
+- **Two-column responsive form layout**
+- **Complete HTML5 validation** (no JavaScript required)
+- **Visual feedback** with green/red borders on field validation
+- **Form elements**:
+  - Username (min 3, max 20 chars, alphanumeric + underscore)
+  - Email (standard email validation)
+  - Password (min 8 chars, uppercase, lowercase, number)
+  - Confirm Password (pattern matching)
+  - Bio (optional, max 200 chars)
+  - Subscription Plan (radio buttons: Basic, Premium, Ultimate)
+  - Interests (checkboxes: Movies, Series, Documentaries)
+  - Country (dropdown selection)
+  - Terms & Conditions (required checkbox)
+- **Redirect**: Form submits to `index.html` on successful validation
+
+## 🎨 Design System
+
+### Color Scheme
+- **Primary Background**: Deep black (#0a0a0a, #1a1a1a)
+- **Accent Color**: Vibrant green (#00ff88)
+- **Text**: White (#ffffff) and gray (#b0b0b0)
+- **Card Background**: Dark gradient (#1a1a1a to #2d2d2d)
+
+### Typography
+- **Font Family**: Poppins (Google Fonts)
+- **Weights**: 300, 400, 500, 600, 700
+- **Responsive sizing** across all breakpoints
+
+### Components
+- **Hero Banners**: Gradient backgrounds with overlays
+- **Movie Cards**: Hover effects with transform and box-shadow
+- **Buttons**: Gradient backgrounds with smooth transitions
+- **Forms**: Rounded inputs with focus states
+- **Navigation**: Sticky positioning with smooth transitions
+
+## 🚀 How to Run
+
+### Method 1: Direct Browser (Simple)
+1. Open `index.html` in any modern web browser
+2. The frameset will load with all components
+3. Use the sidebar navigation to navigate between pages
+4. Click "Sign Up" in the header to open the registration form
+
+### Method 2: Docker (Recommended for Production in MacOS/Linux User Only)
+```bash
+# Start the application
+./start.sh
+
+# Stop the application
+./stop.sh
+```
+
+The Docker setup includes:
+- Nginx web server
+- Automatic configuration
+- Port mapping for easy access
+
+## 📁 File Structure
+
+```
+fluxion/
+├── index.html              # Master frameset
+├── header.html             # Top navigation
+├── nav.html                # Sidebar navigation
+├── footer.html             # Footer section
+├── home.html               # Landing page
+├── movies.html             # Movie listings
+├── series.html             # Series listings
+├── playlist.html           # User playlist
+├── signup.html             # Registration page
+├── watch-*.html            # Individual title pages (10 pages)
+├── assets/
+│   ├── css/
+│   │   └── styles.css      # Main stylesheet
+│   └── img/                # Image assets
+├── nginx/
+│   └── default.conf.template
+├── Dockerfile
+├── docker-compose.yml
+├── start.sh
+└── stop.sh
+```
+
+## 🔧 Technical Details
+
+### CSS Properties Used
+- **Background**: Gradients, colors, patterns
+- **Text/Font**: color, font-size, font-weight, letter-spacing, text-transform
+- **Dimension**: width, height, padding, margin, border-radius
+- **Positioning**: grid, flex, absolute, sticky, fixed
+- **Effects**: transition, transform, box-shadow, opacity
+
+### Form Validation (signup.html)
+Pure HTML5 validation without JavaScript:
+- `required` attribute for mandatory fields
+- `pattern` attribute for complex validation (username, password)
+- `minlength` and `maxlength` for character limits
+- `type="email"` for email validation
+- Visual feedback through CSS `:valid` and `:invalid` pseudo-classes
+
+### Responsive Design
+- Mobile-first approach
+- Breakpoints at 768px and 968px
+- Fluid grid layouts
+- Flexible navigation
+
+## 🌟 Features
+
+- **Frameset Architecture**: Traditional HTML frameset with seamless navigation
+- **Modern UI**: Dark theme with neon green accents
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Form Validation**: HTML5-native validation without JavaScript
+- **Dynamic Content**: 10+ individual movie/series pages
+- **Professional Design**: Netflix-inspired interface
+- **Smooth Animations**: Hover effects and transitions throughout
+- **Accessibility**: Semantic HTML and proper form labels
+
+## 📝 Notes
+
+- All links in navigation use `target="content"` to load in the main frame
+- Sign Up button opens in new tab (`target="_blank"`) for standalone experience
+- The project maintains relative paths for portability
+- Images are optimized webp and jpeg formats
+- External dependencies: Google Fonts (Poppins) and Font Awesome icons
 
 ---
-Tip: If you move the project, keep relative paths intact or update them.
+**Built with**: HTML5, CSS3, Traditional Frameset Architecture  
+**Status**: Complete and fully functional  
+**Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
