@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Navigation</title>
@@ -15,12 +16,15 @@
             height: 100vh;
             overflow-y: auto;
         }
+
         .nav-container {
             padding: 0 15px;
         }
+
         .nav-section {
             margin-bottom: 30px;
         }
+
         .nav-title {
             color: #00ff88;
             font-size: 14px;
@@ -30,14 +34,17 @@
             margin-bottom: 15px;
             padding: 0 15px;
         }
+
         .nav-menu {
             list-style: none;
             margin: 0;
             padding: 0;
         }
+
         .nav-item {
             margin-bottom: 5px;
         }
+
         .nav-link {
             display: flex;
             align-items: center;
@@ -49,16 +56,19 @@
             font-size: 14px;
             font-weight: 500;
         }
+
         .nav-link:hover {
             background: rgba(0, 255, 136, 0.1);
             color: #00ff88;
             transform: translateX(5px);
         }
+
         .nav-link i {
             margin-right: 12px;
             width: 20px;
             text-align: center;
         }
+
         .filter-section {
             background: rgba(0, 255, 136, 0.05);
             border: 1px solid rgba(0, 255, 136, 0.2);
@@ -66,6 +76,7 @@
             padding: 15px;
             margin-bottom: 20px;
         }
+
         .filter-title {
             color: #00ff88;
             font-size: 12px;
@@ -73,6 +84,7 @@
             margin-bottom: 10px;
             text-transform: uppercase;
         }
+
         .filter-select {
             width: 100%;
             padding: 8px 12px;
@@ -84,15 +96,18 @@
             outline: none;
             margin-bottom: 8px;
         }
+
         .filter-select:focus {
             border-color: #00ff88;
         }
+
         .filter-select option {
             background: #1a1a1a;
             color: #ffffff;
         }
     </style>
 </head>
+
 <body>
     <div class="nav-container">
         <div class="nav-section">
@@ -121,7 +136,29 @@
             </ul>
         </div>
 
+        <div class="nav-section">
+            <h3 class="nav-title">Account</h3>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="purchase.html" target="content" class="nav-link">
+                        <i class="fas fa-crown"></i>Subscribe
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <h3 class="nav-title">Support</h3>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="contact.html" target="content" class="nav-link">
+                        <i class="fas fa-envelope"></i>Contact Us
+                    </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </body>
-</html>
 
+</html>

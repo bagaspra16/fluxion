@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 80px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            color: #00ff88;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Guest User Buttons */
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-btn {
+            background: transparent;
+            border: 2px solid #00ff88;
+            border-radius: 8px;
+            padding: 10px 20px;
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .signup-btn {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            color: #0a0a0a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .signup-btn:hover {
+            background: linear-gradient(135deg, #00cc6a 0%, #00ff88 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.4);
+        }
+
+        .signup-btn i {
+            font-size: 16px;
+        }
+
+        /* Logged In User Section */
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 16px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .user-info:hover {
+            background: rgba(0, 255, 136, 0.15);
+            border-color: #00ff88;
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .user-name {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .dropdown-icon {
+            color: #00ff88;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .user-info.active .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .user-dropdown {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 12px;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 99999;
+            overflow: hidden;
+        }
+
+        .user-dropdown.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            padding-left: 25px;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .dropdown-item.logout {
+            color: #ff4444;
+        }
+
+        .dropdown-item.logout:hover {
+            background: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="logo-section">
+            <a href="home.html" target="content" class="logo">
+                <i class="fas fa-play-circle"></i>Fluxion
+            </a>
+        </div>
+
+        <div class="user-section">
+            <!-- Guest User Buttons -->
+            <div class="auth-buttons" id="guestButtons">
+                <a href="login.html" target="_blank" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <a href="register.html" target="_blank" class="signup-btn">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </a>
+            </div>
+
+            <!-- Logged In User Profile -->
+            <div class="user-profile" id="userProfile">
+                <div class="user-info" id="userInfoBtn">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <span class="user-name" id="userName"></span>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+
+                <script>
+                    // Create dropdown element
+                    dropdown = window.parent.document.createElement('div');
+                    dropdown.id = 'userDropdownMenu';
+                    dropdown.style.cssText = `
+                display: none;
+                position: fixed;
+                top: 70px;
+                right: 20px;
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+                border: 2px solid rgba(0, 255, 136, 0.3);
+                border-radius: 12px;
+                min-width: 200px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                z-index: 99999;
+                overflow: hidden;
+                font-family: 'Poppins', sans-serif;
+            `;
+
+                    dropdown.innerHTML = `
+                <a href="#" data-action="upgrade" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; color: #ffffff; text-decoration: none; cursor: pointer; transition: all 0.3s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                    <i class="fas fa-crown" style="width: 20px; text-align: center;"></i>
+                    <span>Upgrade Plan</span>
+                </a>
+                <a href="#" data-action="contact" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; color: #ffffff; text-decoration: none; cursor: pointer; transition: all 0.3s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                    <i class="fas fa-envelope" style="width: 20px; text-align: center;"></i>
+                    <span>Contact Support</span>
+                </a>
+                <a href="#" data-action="logout" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; color: #ff4444; text-decoration: none; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="fas fa-sign-out-alt" style="width: 20px; text-align: center;"></i>
+                    <span>Logout</span>
+                </a>
+            `;
+
+                    // Add hover effects
+                    const items = dropdown.querySelectorAll('a');
+                    items.forEach(item => {
+                        item.addEventListener('mouseenter', function () {
+                            this.style.background = 'rgba(0, 255, 136, 0.1)';
+                            this.style.color = '#00ff88';
+                            this.style.paddingLeft = '25px';
+                        });
+                        item.addEventListener('mouseleave', function () {
+                            this.style.background = 'transparent';
+                            if (this.dataset.action === 'logout') {
+                                this.style.color = '#ff4444';
+                            } else {
+                                this.style.color = '#ffffff';
+                            }
+                            this.style.paddingLeft = '20px';
+                        });
+
+                        // Add click handlers
+                        item.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            const action = this.dataset.action;
+
+                            if (action === 'upgrade') {
+                                window.parent.frames.content.location.href = 'purchase.html';
+                            } else if (action === 'contact') {
+                                window.parent.frames.content.location.href = 'contact.html';
+                            } else if (action === 'logout') {
+                                if (window.parent.FluxionAuth) {
+                                    window.parent.FluxionAuth.logout();
+                                }
+                            }
+
+                            // Hide dropdown
+                            dropdown.style.display = 'none';
+                            document.getElementById('userInfoBtn').classList.remove('active');
+                        });
+                    });
+
+                    window.parent.document.body.appendChild(dropdown);
+                    return dropdown;
+                    }
+
+                    // Update UI based on authentication state
+                    function updateAuthUI(user) {
+                        const guestButtons = document.getElementById('guestButtons');
+                        const userProfile = document.getElementById('userProfile');
+                        const userName = document.getElementById('userName');
+                        const userAvatar = document.getElementById('userAvatar');
+
+                        if (user) {
+                            // User is logged in
+                            guestButtons.style.display = 'none';
+                            userProfile.style.display = 'flex';
+                            userName.textContent = user.fullName || user.username;
+
+                            // Set avatar initial (first letter of name)
+                            const initial = (user.fullName || user.username).charAt(0).toUpperCase();
+                            userAvatar.textContent = initial;
+
+                            // Create dropdown in parent window
+                            createDropdownInParent();
+                        } else {
+                            // User is not logged in
+                            guestButtons.style.display = 'flex';
+                            userProfile.style.display = 'none';
+                        }
+                    }
+
+                    // Toggle dropdown menu
+                    document.getElementById('userInfoBtn').addEventListener('click', function (e) {
+                        e.stopPropagation();
+
+                        if (!window.parent || window.parent === window) return;
+
+                        const dropdown = window.parent.document.getElementById('userDropdownMenu');
+                        if (!dropdown) return;
+
+                        const isVisible = dropdown.style.display === 'block';
+                        dropdown.style.display = isVisible ? 'none' : 'block';
+                        this.classList.toggle('active', !isVisible);
+                    });
+
+                    // Close dropdown when clicking outside
+                    if (window.parent && window.parent !== window) {
+                        window.parent.document.addEventListener('click', function (e) {
+                            const dropdown = window.parent.document.getElementById('userDropdownMenu');
+                            if (dropdown && !dropdown.contains(e.target)) {
+                                dropdown.style.display = 'none';
+                                const userBtn = document.getElementById('userInfoBtn');
+                                if (userBtn) userBtn.classList.remove('active');
+                            }
+                        });
+                    }
+
+                    // Initialize on page load
+                    window.addEventListener('load', function () {
+                        if (window.parent && window.parent.FluxionAuth) {
+                            const currentUser = window.parent.FluxionAuth.getCurrentUser();
+                            updateAuthUI(currentUser);
+                        }
+                    });
+
+                    // Make updateAuthUI available globally
+                    window.updateAuthUI = updateAuthUI;
+                </script>
+</body>
+
+</html>

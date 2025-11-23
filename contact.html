@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — Fluxion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/form-validation.js"></script>
+</head>
+
+<body class="page" style="padding: 40px; overflow-y: auto;">
+
+    <!-- Header Section -->
+    <div style="margin-bottom: 40px;">
+        <h1
+            style="color: #00ff88; font-size: 36px; font-weight: 700; margin: 0 0 10px 0; display: flex; align-items: center; gap: 15px;">
+            <i class="fas fa-envelope"></i> Contact Us
+        </h1>
+        <p style="color: #b0b0b0; font-size: 16px; margin: 0;">We'd love to hear from you. Send us a message and we'll
+            respond as soon as possible.</p>
+    </div>
+
+    <!-- Contact Form -->
+    <form class="validation-form" id="contactForm"
+        data-success-message="Thank you! We'll get back to you within 24 hours.">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="contactName">Your Name <span class="required">*</span></label>
+                <input type="text" id="contactName" name="fullName" class="form-control" placeholder="John Doe"
+                    required>
+                <div class="validation-message error-message"></div>
+                <div class="hint-text">Enter your full name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="contactEmail">Email Address <span class="required">*</span></label>
+                <input type="email" id="contactEmail" name="email" class="form-control" placeholder="your@email.com"
+                    required>
+                <div class="validation-message error-message"></div>
+                <div class="hint-text">We'll reply to this email</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="subject">Subject <span class="required">*</span></label>
+                <input type="text" id="subject" name="subject" class="form-control" placeholder="How can we help?"
+                    required>
+                <div class="validation-message error-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category <span class="required">*</span></label>
+                <select id="category" name="category" class="form-control" required>
+                    <option value="">Select a category</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="technical">Technical Support</option>
+                    <option value="billing">Billing & Payments</option>
+                    <option value="content">Content Request</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                </select>
+                <div class="validation-message error-message"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message <span class="required">*</span></label>
+            <textarea id="message" name="message" class="form-control" placeholder="Tell us what's on your mind..."
+                required style="min-height: 150px;"></textarea>
+            <div class="char-counter" id="charCounter">0/500</div>
+            <div class="validation-message error-message"></div>
+            <div class="hint-text">Minimum 10 characters, maximum 500 characters</div>
+        </div>
+
+        <div class="form-group">
+            <label for="attachment">Attachment (Optional)</label>
+            <div class="file-upload">
+                <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.doc,.docx">
+                <label for="attachment" class="file-upload-label">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Click to upload a file</span>
+                </label>
+                <div class="file-name"></div>
+            </div>
+            <div class="hint-text">Supported formats: Images, PDF, Word documents (Max 5MB)</div>
+        </div>
+
+        <div class="checkbox-group">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="copyEmail" name="copyEmail">
+                <span class="checkmark"></span>
+                <label for="copyEmail">Send me a copy of this message</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit" style="max-width: 300px;">
+            <span class="spinner"></span>
+            <span class="btn-text">Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </form>
+
+    <!-- Contact Info -->
+    <div style="margin-top: 50px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <h2 style="color: #00ff88; font-size: 24px; margin-bottom: 20px;">Other Ways to Reach Us</h2>
+        <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: #ffffff; font-size: 16px; margin-bottom: 10px;">
+                    <i class="fas fa-envelope" style="color: #00ff88; margin-right: 10px;"></i>Email Support
+                </h3>
+                <p style="color: #b0b0b0; margin: 0;">support@fluxion.com</p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: #ffffff; font-size: 16px; margin-bottom: 10px;">
+                    <i class="fas fa-phone" style="color: #00ff88; margin-right: 10px;"></i>Phone Support
+                </h3>
+                <p style="color: #b0b0b0; margin: 0;">1-800-FLUXION</p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: #ffffff; font-size: 16px; margin-bottom: 10px;">
+                    <i class="fas fa-clock" style="color: #00ff88; margin-right: 10px;"></i>Business Hours
+                </h3>
+                <p style="color: #b0b0b0; margin: 0;">Mon-Fri: 9AM - 6PM EST</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

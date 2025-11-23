@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Fluxion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+            background: #0a0a0a;
+            padding: 60px 20px;
+            overflow-x: hidden;
+        }
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            gap: 12px;
+            color: #00cc6a;
+        }
+
+        .error-text {
+            color: #ff4444;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-text.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="page-with-effect">
+    <div class="auth-wrapper">
+        <a href="index.html" class="back-home">
+            <i class="fas fa-arrow-left"></i>
+            Back to Fluxion
+        </a>
+
+        <div class="form-container">
+            <div class="form-header">
+                <h1><i class="fas fa-sign-in-alt"></i> Welcome Back</h1>
+                <p>Sign in to continue streaming</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email or Username <span class="required">*</span></label>
+                    <input type="text" id="loginEmail" name="loginEmail" class="form-control"
+                        placeholder="Enter your email or username" required>
+                    <div class="error-text" id="loginEmailError">Please enter your email or username</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password <span class="required">*</span></label>
+                    <input type="password" id="loginPassword" name="loginPassword" class="form-control"
+                        placeholder="Enter your password" required>
+                    <div class="error-text" id="loginPasswordError">Please enter your password</div>
+                </div>
+
+                <div class="checkbox-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <span class="checkmark"></span>
+                        <label for="rememberMe">Remember me for 30 days</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Sign In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="form-links">
+                <a href="forgot-password.html">Forgot Password?</a>
+                <br><br>
+                Don't have an account? <a href="register.html">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            console.log('Login page loaded');
+            console.log('FluxionAuth available:', !!window.FluxionAuth);
+
+            $('.error-text').removeClass('show');
+
+            $('#loginForm').on('submit', function (e) {
+                e.preventDefault();
+                console.log('Login form submitted');
+
+                $('.error-text').removeClass('show');
+
+                const emailOrUsername = $('#loginEmail').val().trim();
+                const password = $('#loginPassword').val();
+
+                let isValid = true;
+
+                if (!emailOrUsername) {
+                    $('#loginEmailError').addClass('show');
+                    isValid = false;
+                }
+
+                if (!password) {
+                    $('#loginPasswordError').addClass('show');
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    console.log('Validation failed');
+                    return false;
+                }
+
+                console.log('Validation passed, logging in...');
+
+                const submitBtn = $('.btn-submit');
+                submitBtn.addClass('loading');
+                submitBtn.find('.btn-text').text('Signing In...');
+
+                setTimeout(function () {
+                    if (window.FluxionAuth) {
+                        console.log('Calling FluxionAuth.login...');
+                        const result = window.FluxionAuth.login(emailOrUsername, password);
+                        console.log('Login result:', result);
+
+                        submitBtn.removeClass('loading');
+                        submitBtn.find('.btn-text').text('Sign In');
+
+                        if (result.success) {
+                            alert('Login successful! Redirecting...');
+                            setTimeout(function () {
+                                window.location.href = 'index.html';
+                            }, 1000);
+                        } else {
+                            alert('Error: ' + result.message);
+                        }
+                    } else {
+                        console.error('FluxionAuth not available!');
+                        alert('Authentication system not loaded. Please refresh the page.');
+                        submitBtn.removeClass('loading');
+                        submitBtn.find('.btn-text').text('Sign In');
+                    }
+                }, 500);
+
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>

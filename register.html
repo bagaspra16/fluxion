@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register — Fluxion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0a0a;
+            padding: 40px 20px 80px;
+        }
+
+        .register-page {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            gap: 12px;
+            color: #00cc6a;
+        }
+
+        /* Main Card Container */
+        .register-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .register-header h1 {
+            color: #00ff88;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .register-header p {
+            color: #b0b0b0;
+            font-size: 15px;
+        }
+
+        /* 3 Column Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        /* Bottom section */
+        .form-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .form-bottom .btn-submit {
+            max-width: 400px;
+        }
+
+        /* Error message */
+        .error-text {
+            color: #ff4444;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-text.show {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .register-card {
+                padding: 35px 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-page">
+        <a href="index.html" class="back-home">
+            <i class="fas fa-arrow-left"></i>
+            Back to Fluxion
+        </a>
+
+        <div class="register-card">
+            <div class="register-header">
+                <h1><i class="fas fa-user-plus"></i> Create Account</h1>
+                <p>Join Fluxion and start streaming unlimited content</p>
+            </div>
+
+            <form id="registerForm">
+
+                <!-- 3 Column Grid -->
+                <div class="form-grid">
+
+                    <!-- Column 1 -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="fullName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" class="form-control" placeholder="John Doe"
+                                required>
+                            <div class="error-text" id="fullNameError">Please enter your full name</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Date of Birth <span class="required">*</span></label>
+                            <input type="date" id="dob" name="dob" class="form-control" required>
+                            <div class="error-text" id="dobError">Please select your date of birth</div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control"
+                                placeholder="your@email.com" required>
+                            <div class="error-text" id="emailError">Please enter a valid email</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Username <span class="required">*</span></label>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="username"
+                                required>
+                            <div class="error-text" id="usernameError">Username must be 4-20 characters</div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <input type="password" id="password" name="password" class="form-control"
+                                placeholder="••••••••" required>
+                            <div class="error-text" id="passwordError">Password must be at least 8 characters</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
+                                placeholder="••••••••" required>
+                            <div class="error-text" id="confirmPasswordError">Passwords do not match</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section -->
+                <div class="form-bottom">
+                    <div class="checkbox-group" style="margin-bottom: 12px;">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            <label for="terms">I agree to the <a href="#" style="color: #00ff88;">Terms and
+                                    Conditions</a> and <a href="#" style="color: #00ff88;">Privacy Policy</a></label>
+                        </div>
+                        <div class="error-text" id="termsError">You must accept the terms</div>
+                    </div>
+
+                    <div class="checkbox-group" style="margin-bottom: 30px;">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            <label for="newsletter">Send me updates and special offers via email</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <span class="spinner"></span>
+                        <span class="btn-text">Create Account</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="form-links" style="margin-top: 20px;">
+                        Already have an account? <a href="login.html">Sign In</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            console.log('Register page loaded');
+            console.log('FluxionAuth available:', !!window.FluxionAuth);
+
+            // Hide all errors initially
+            $('.error-text').removeClass('show');
+
+            $('#registerForm').on('submit', function (e) {
+                e.preventDefault();
+                console.log('Form submitted');
+
+                // Hide all previous errors
+                $('.error-text').removeClass('show');
+
+                // Get form values
+                const fullName = $('#fullName').val().trim();
+                const email = $('#email').val().trim();
+                const username = $('#username').val().trim();
+                const password = $('#password').val();
+                const confirmPassword = $('#confirmPassword').val();
+                const dob = $('#dob').val();
+                const termsAccepted = $('#terms').is(':checked');
+
+                let isValid = true;
+
+                // Validate full name
+                if (!fullName || fullName.length < 2) {
+                    $('#fullNameError').addClass('show');
+                    isValid = false;
+                }
+
+                // Validate email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email || !emailRegex.test(email)) {
+                    $('#emailError').addClass('show');
+                    isValid = false;
+                }
+
+                // Validate username
+                if (!username || username.length < 4 || username.length > 20) {
+                    $('#usernameError').addClass('show');
+                    isValid = false;
+                }
+
+                // Validate password
+                if (!password || password.length < 8) {
+                    $('#passwordError').addClass('show');
+                    isValid = false;
+                }
+
+                // Validate confirm password
+                if (password !== confirmPassword) {
+                    $('#confirmPasswordError').addClass('show');
+                    isValid = false;
+                }
+
+                // Validate DOB
+                if (!dob) {
+                    $('#dobError').addClass('show');
+                    isValid = false;
+                }
+
+                // Validate terms
+                if (!termsAccepted) {
+                    $('#termsError').addClass('show');
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    console.log('Validation failed');
+                    return false;
+                }
+
+                console.log('Validation passed, creating account...');
+
+                // Show loading state
+                const submitBtn = $('.btn-submit');
+                submitBtn.addClass('loading');
+                submitBtn.find('.btn-text').text('Creating Account...');
+
+                // Create account
+                const userData = {
+                    fullName: fullName,
+                    email: email,
+                    username: username,
+                    password: password,
+                    dob: dob
+                };
+
+                console.log('User data:', userData);
+                console.log('Calling FluxionAuth.register...');
+
+                if (window.FluxionAuth) {
+                    const result = window.FluxionAuth.register(userData);
+                    console.log('Register result:', result);
+
+                    submitBtn.removeClass('loading');
+                    submitBtn.find('.btn-text').text('Create Account');
+
+                    if (result.success) {
+                        alert('Account created successfully! Redirecting to home...');
+                        setTimeout(function () {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    } else {
+                        alert('Error: ' + result.message);
+                    }
+                } else {
+                    console.error('FluxionAuth not available!');
+                    alert('Authentication system not loaded. Please refresh the page.');
+                    submitBtn.removeClass('loading');
+                    submitBtn.find('.btn-text').text('Create Account');
+                }
+
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>
