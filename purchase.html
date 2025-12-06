@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/auth.js"></script>
     <style>
         .error-text {
             color: #ff4444;
@@ -150,42 +151,43 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label for="city">City <span class="required">*</span></label>
-                <input type="text" id="city" name="city" class="form-control" placeholder="New York" required>
-                <div class="error-text" id="cityError">Please enter city</div>
+                <label for="country">Country <span class="required">*</span></label>
+                <select id="country" name="country" class="form-control" required>
+                    <option value="">Select Country</option>
+                    <option value="ID">Indonesia</option>
+                    <option value="SG">Singapore</option>
+                    <option value="MY">Malaysia</option>
+                    <option value="TH">Thailand</option>
+                    <option value="PH">Philippines</option>
+                    <option value="VN">Vietnam</option>
+                    <option value="JP">Japan</option>
+                    <option value="KR">South Korea</option>
+                    <option value="IN">India</option>
+                    <option value="CN">China</option>
+                </select>
+                <div class="error-text" id="countryError">Please select country</div>
             </div>
 
             <div class="form-group">
-                <label for="zipCode">ZIP Code <span class="required">*</span></label>
-                <input type="text" id="zipCode" name="zipCode" class="form-control" placeholder="10001" required>
-                <div class="error-text" id="zipCodeError">Please enter ZIP code</div>
+                <label for="city">City <span class="required">*</span></label>
+                <select id="city" name="city" class="form-control" required>
+                    <option value="">Select country first</option>
+                </select>
+                <div class="error-text" id="cityError">Please select city</div>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label for="state">State <span class="required">*</span></label>
-                <select id="state" name="state" class="form-control" required>
-                    <option value="">Select State</option>
-                    <option value="CA">California</option>
-                    <option value="NY">New York</option>
-                    <option value="TX">Texas</option>
-                    <option value="FL">Florida</option>
-                    <option value="IL">Illinois</option>
-                    <option value="other">Other</option>
-                </select>
-                <div class="error-text" id="stateError">Please select state</div>
+                <label for="state">Province/State</label>
+                <input type="text" id="state" name="state" class="form-control"
+                    placeholder="Province or State (optional)">
             </div>
 
             <div class="form-group">
-                <label for="country">Country <span class="required">*</span></label>
-                <select id="country" name="country" class="form-control" required>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="AU">Australia</option>
-                    <option value="other">Other</option>
-                </select>
+                <label for="zipCode">Postal Code <span class="required">*</span></label>
+                <input type="text" id="zipCode" name="zipCode" class="form-control" placeholder="12345" required>
+                <div class="error-text" id="zipCodeError">Please enter postal code</div>
             </div>
         </div>
 
@@ -205,7 +207,7 @@
             </div>
         </div>
 
-        <div class="checkbox-group">
+        <div class="checkbox-group" style="margin-top: 12px;">
             <div class="checkbox-wrapper">
                 <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
                 <span class="checkmark"></span>
@@ -222,15 +224,67 @@
         </button>
 
         <p style="text-align: center; color: #666666; font-size: 12px; margin-top: 15px;">
-            <i class="fas fa-shield-alt"></i> Secure payment powered by industry-leading encryption
+            Secure payment powered by industry-leading encryption
         </p>
     </form>
 
     <script>
+        // Authentication check - redirect to login if not authenticated
+        if (!window.FluxionAuth || !window.FluxionAuth.isLoggedIn()) {
+            console.log('User not logged in, redirecting to login page');
+            // Store current page to redirect back after login
+            localStorage.setItem('fluxion_redirect_after_login', 'purchase.html');
+            // Use window.top to break out of frameset
+            window.top.location.href = 'login.html';
+        }
+
+        // Country-City data structure
+        const countryCities = {
+            'ID': ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Semarang', 'Makassar', 'Palembang', 'Tangerang', 'Depok', 'Bekasi', 'Yogyakarta', 'Malang', 'Bogor', 'Batam', 'Denpasar'],
+            'SG': ['Singapore', 'Jurong', 'Woodlands', 'Tampines', 'Bedok'],
+            'MY': ['Kuala Lumpur', 'George Town', 'Johor Bahru', 'Ipoh', 'Shah Alam', 'Petaling Jaya', 'Malacca City', 'Kota Kinabalu'],
+            'TH': ['Bangkok', 'Chiang Mai', 'Phuket', 'Pattaya', 'Krabi', 'Ayutthaya', 'Hua Hin', 'Khon Kaen'],
+            'PH': ['Manila', 'Quezon City', 'Davao City', 'Cebu City', 'Makati', 'Pasig', 'Taguig', 'Zamboanga City'],
+            'VN': ['Ho Chi Minh City', 'Hanoi', 'Da Nang', 'Nha Trang', 'Hue', 'Can Tho', 'Vung Tau', 'Hai Phong'],
+            'JP': ['Tokyo', 'Osaka', 'Kyoto', 'Yokohama', 'Nagoya', 'Sapporo', 'Fukuoka', 'Kobe', 'Hiroshima'],
+            'KR': ['Seoul', 'Busan', 'Incheon', 'Daegu', 'Daejeon', 'Gwangju', 'Suwon', 'Ulsan', 'Jeju'],
+            'IN': ['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Kolkata', 'Pune', 'Ahmedabad', 'Jaipur'],
+            'CN': ['Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen', 'Chengdu', 'Hangzhou', 'Wuhan', 'Xi\'an', 'Nanjing']
+        };
+
         $(document).ready(function () {
             console.log('Purchase page loaded');
+            console.log('User authenticated:', window.FluxionAuth.currentUser);
 
             updatePricing();
+
+            // Country change handler - populate cities
+            $('#country').on('change', function () {
+                const countryCode = $(this).val();
+                const citySelect = $('#city');
+
+                // Clear current options
+                citySelect.empty();
+
+                if (countryCode && countryCities[countryCode]) {
+                    // Add default option
+                    citySelect.append('<option value="">Select City</option>');
+
+                    // Add cities for selected country
+                    countryCities[countryCode].forEach(function (city) {
+                        citySelect.append('<option value="' + city + '">' + city + '</option>');
+                    });
+
+                    citySelect.prop('disabled', false);
+                } else {
+                    citySelect.append('<option value="">Select country first</option>');
+                    citySelect.prop('disabled', true);
+                }
+
+                // Clear any error
+                $('#cityError').removeClass('show');
+                $('#city').removeClass('error');
+            });
 
             // Plan selection
             $('.plan-card').on('click', function () {
@@ -312,26 +366,26 @@
                 }
 
                 // Validate city
-                const city = $('#city').val().trim();
+                const city = $('#city').val();
                 if (!city) {
                     $('#cityError').addClass('show');
                     $('#city').addClass('error');
                     isValid = false;
                 }
 
-                // Validate ZIP
+                // Validate country
+                const country = $('#country').val();
+                if (!country) {
+                    $('#countryError').addClass('show');
+                    $('#country').addClass('error');
+                    isValid = false;
+                }
+
+                // Validate postal code
                 const zipCode = $('#zipCode').val().trim();
                 if (!zipCode) {
                     $('#zipCodeError').addClass('show');
                     $('#zipCode').addClass('error');
-                    isValid = false;
-                }
-
-                // Validate state
-                const state = $('#state').val();
-                if (!state) {
-                    $('#stateError').addClass('show');
-                    $('#state').addClass('error');
                     isValid = false;
                 }
 

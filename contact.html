@@ -12,7 +12,6 @@
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/form-validation.js"></script>
 </head>
 
 <body class="page" style="padding: 40px; overflow-y: auto;">
@@ -28,15 +27,12 @@
     </div>
 
     <!-- Contact Form -->
-    <form class="validation-form" id="contactForm"
-        data-success-message="Thank you! We'll get back to you within 24 hours.">
+    <form action="https://formspree.io/f/mldqlkdb" method="POST" id="contactForm">
 
         <div class="form-row">
             <div class="form-group">
                 <label for="contactName">Your Name <span class="required">*</span></label>
-                <input type="text" id="contactName" name="fullName" class="form-control" placeholder="John Doe"
-                    required>
-                <div class="validation-message error-message"></div>
+                <input type="text" id="contactName" name="name" class="form-control" placeholder="John Doe" required>
                 <div class="hint-text">Enter your full name</div>
             </div>
 
@@ -44,7 +40,6 @@
                 <label for="contactEmail">Email Address <span class="required">*</span></label>
                 <input type="email" id="contactEmail" name="email" class="form-control" placeholder="your@email.com"
                     required>
-                <div class="validation-message error-message"></div>
                 <div class="hint-text">We'll reply to this email</div>
             </div>
         </div>
@@ -52,9 +47,8 @@
         <div class="form-row">
             <div class="form-group">
                 <label for="subject">Subject <span class="required">*</span></label>
-                <input type="text" id="subject" name="subject" class="form-control" placeholder="How can we help?"
+                <input type="text" id="subject" name="_subject" class="form-control" placeholder="How can we help?"
                     required>
-                <div class="validation-message error-message"></div>
             </div>
 
             <div class="form-group">
@@ -68,31 +62,18 @@
                     <option value="feedback">Feedback</option>
                     <option value="other">Other</option>
                 </select>
-                <div class="validation-message error-message"></div>
             </div>
         </div>
 
         <div class="form-group">
             <label for="message">Message <span class="required">*</span></label>
             <textarea id="message" name="message" class="form-control" placeholder="Tell us what's on your mind..."
-                required style="min-height: 150px;"></textarea>
+                required style="min-height: 150px;" maxlength="500" minlength="10"></textarea>
             <div class="char-counter" id="charCounter">0/500</div>
-            <div class="validation-message error-message"></div>
             <div class="hint-text">Minimum 10 characters, maximum 500 characters</div>
         </div>
 
-        <div class="form-group">
-            <label for="attachment">Attachment (Optional)</label>
-            <div class="file-upload">
-                <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.doc,.docx">
-                <label for="attachment" class="file-upload-label">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <span>Click to upload a file</span>
-                </label>
-                <div class="file-name"></div>
-            </div>
-            <div class="hint-text">Supported formats: Images, PDF, Word documents (Max 5MB)</div>
-        </div>
+
 
         <div class="checkbox-group">
             <div class="checkbox-wrapper">
@@ -123,7 +104,11 @@
                 <h3 style="color: #ffffff; font-size: 16px; margin-bottom: 10px;">
                     <i class="fas fa-phone" style="color: #00ff88; margin-right: 10px;"></i>Phone Support
                 </h3>
-                <p style="color: #b0b0b0; margin: 0;">1-800-FLUXION</p>
+                <p style="color: #b0b0b0; margin: 0;"><a href="https://wa.me/6282281294931" target="_blank"
+                        rel="noopener noreferrer"
+                        style="color: #b0b0b0; text-decoration: none; transition: color 0.3s ease;"
+                        onmouseover="this.style.color='#00ff88'" onmouseout="this.style.color='#b0b0b0'">+62
+                        822-8129-4931</a></p>
             </div>
             <div style="flex: 1; min-width: 250px;">
                 <h3 style="color: #ffffff; font-size: 16px; margin-bottom: 10px;">
@@ -133,6 +118,31 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            // Character counter for message textarea
+            const messageField = $('#message');
+            const charCounter = $('#charCounter');
+
+            messageField.on('input', function () {
+                const length = $(this).val().length;
+                charCounter.text(length + '/500');
+            });
+
+
+
+            // Form submission handling
+            $('#contactForm').on('submit', function (e) {
+                const submitBtn = $('.btn-submit');
+                submitBtn.addClass('loading');
+                submitBtn.find('.btn-text').text('Sending...');
+
+                // Let the form submit naturally to Formspree
+                // Formspree will handle the redirect and show their thank you page
+            });
+        });
+    </script>
 
 </body>
 
