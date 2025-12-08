@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/auth.js"></script>
+    <script src="assets/js/form-validation.js"></script>
     <style>
         * {
             margin: 0;
@@ -89,8 +90,12 @@
 
                 <div class="form-group">
                     <label for="loginPassword">Password <span class="required">*</span></label>
-                    <input type="password" id="loginPassword" name="loginPassword" class="form-control"
-                        placeholder="Enter your password" required>
+                    <div style="position: relative;">
+                        <input type="password" id="loginPassword" name="loginPassword" class="form-control"
+                            placeholder="Enter your password" required>
+                        <i class="fas fa-eye toggle-password"
+                            style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #666;"></i>
+                    </div>
                     <div class="error-text" id="loginPasswordError">Please enter your password</div>
                 </div>
 
